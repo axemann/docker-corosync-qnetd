@@ -23,7 +23,8 @@ RUN useradd -r -M -d /etc/corosync/qnetd -u 903 coroqnetd \
 	&& touch /etc/corosync/qnetd/nssdb/cert9.db \
 	&& apt-get update \
 	&& apt-get install --no-install-recommends -y corosync-qnetd \
-	&& rm -rf /etc/corosync /var/lib/apt/lists/*
+	&& chown -R coroqnetd:coroqnetd /etc/corosync \
+	&& rm -rf /etc/corosync/qnetd /var/lib/apt/lists/*
 
 # Run the status command periodically to make sure everything is working
 # (This returns success if qnetd is running, even if nobody is connected)

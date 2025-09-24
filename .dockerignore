@@ -1,6 +1,7 @@
 *.md
 .git/
 .github/
+.devcontainer/
 Makefile
 Dockerfile
 LICENSE
