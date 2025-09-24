@@ -15,7 +15,6 @@ ADD "https://enterprise.proxmox.com/debian/proxmox-release-trixie.gpg" \
 # Then install corosync-qnetd from the Proxmox repos. Also don't generate
 # the certs here and instead create them when the container is first run.
 RUN useradd -r -M -d /etc/corosync/qnetd -u 903 coroqnetd \
-		--home /etc/corosync/qnetd --group --uid=903 coroqnetd \
 	&& chmod 1777 /var/run \
 	&& chmod a+r /etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg \
 	&& echo "deb http://download.proxmox.com/debian/pve trixie pve-no-subscription" \
