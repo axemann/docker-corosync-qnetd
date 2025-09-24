@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/axemann/docker-corosync-qnetd/actions/workflows/dockerimage.yml/badge.svg)](https://github.com/axemann/docker-corosync-qnetd/actions/workflows/dockerimage.yml)
+
 # Dockerized Corosync QNet Daemon
 
 Sets up a Corosync v3 QNet Daemon for use with Proxmox.
