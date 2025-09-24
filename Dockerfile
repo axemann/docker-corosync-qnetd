@@ -1,11 +1,11 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 LABEL description="Corosync Qdevice Network daemon"
 LABEL documentation="man:corosync-qnetd"
 
 # Install the proxmox repository signing key.
-ADD "https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg" \
-	/etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+ADD "https://enterprise.proxmox.com/debian/proxmox-release-trixie.gpg" \
+	/etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg
 
 # Create the coroqnetd user and group, set the sticky bit on /var/run so
 # corosync-qnetd can create its runtime directory, and install the proxmox
@@ -17,8 +17,8 @@ ADD "https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg" \
 RUN adduser --quiet --system --disabled-login --no-create-home \
 		--home /etc/corosync/qnetd --group --uid=903 coroqnetd \
 	&& chmod 1777 /var/run \
-	&& chmod a+r /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg \
-	&& echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" \
+	&& chmod a+r /etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg \
+	&& echo "deb http://download.proxmox.com/debian/pve trixie pve-no-subscription" \
 		> /etc/apt/sources.list.d/corosync3.list \
 	&& mkdir -p /etc/corosync/qnetd/nssdb \
 	&& touch /etc/corosync/qnetd/nssdb/cert9.db \
